@@ -4,12 +4,42 @@
 	// import Card2 from './lib/Card2.svelte';
     // import { each } from 'svelte/internal';
     // import Counter from './lib/Counter.svelte';
-    import Card from "./Card.svelte";
+    // import Card from "./Card.svelte";
 	let cats = [
 		{ id: 'J---aiyznGQ', name: 'Keyboard Cat' },
 		{ id: 'z_AbfPXTKms', name: 'Maru' },
 		{ id: 'OUtn3pvWmpg', name: 'Henri The Existential Cat' }
 	];
+	// export let query ;
+	async function sendtobknd(){
+		let query = document.getElementById("text-input").value
+    let resp = await fetch("http://127.0.0.1:5000/extapi/",{method:"POST",
+    headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    body : JSON.stringify(query)
+    })
+    let respdata = await resp.json()
+    datadisp(respdata)
+}
+
+sendtobknd()
+
+function datadisp(data){
+    let prodcont = document.getElementById("prodcont")
+    // prodcont.style.width="600px"
+    // document.body.style.backgroundImage = "linear-gradient(red, yellow)"
+    // document.body.style.color= "white"
+    data.forEach(element => {
+        let child = document.createElement("h4")
+        child.innerText = element
+        prodcont.appendChild(child)
+    });
+}
+
+
+
 </script>
 
 <main>
@@ -28,17 +58,20 @@
 		  <a href="src\Signup.html">Sign Up</a>
 	  </div>
 
-	  <Card></Card>
+	  <!-- <Card></Card> -->
 	  <div id="ctn"></div>
 
-	  <!-- <div id="tagline-container">
+	   <div id="tagline-container">
 		  <p id="taglinepp">Explore our Products</p>
 	  </div>
 
 	  <div id="searchbar">
-			<input id="text-input" type="text" placeholder="Search for Products">
-	  </div> -->
+			<input id="text-input" type="text" placeholder="Search for Products" on:change={sendtobknd}>
+	  </div> 
 
+	  <div id="prodcont">
+
+	  </div>
 	
 	
 
