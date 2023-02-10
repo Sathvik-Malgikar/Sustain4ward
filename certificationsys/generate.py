@@ -14,4 +14,4 @@ def create_cert(name,offset,activities):
     editable.text((320 ,1020),f"{datetime.date.today()}",(25,25,25),font= date_font)
     raw.save("converted.png")
     
-    
+#
