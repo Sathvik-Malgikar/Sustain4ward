@@ -10,7 +10,7 @@ btn.addEventListener("click",()=>{
 
 
 function sendtobknd(data){
-    fetch("localhost:5000/ext",{method:"POST",
+    fetch("http://127.0.0.1:5000/extapi/",{method:"POST",
     headers: {
         'Content-Type': 'application/json'
         // 'Content-Type': 'application/x-www-form-urlencoded',

@@ -1,6 +1,7 @@
 from flask import Flask , send_file,request,render_template
-import flask_cors
+from flask_cors import CORS
 from flask_pymongo import PyMongo
+import json
 
 d=dict()
 d["heater"] ={ "val" : 7 ,"alt" : "https://sunearthinc.com/"  }
@@ -15,16 +16,30 @@ d["steel"] =3
 
 
 app=Flask(__name__)
-app.config["MONGO_URI"]="mongodb://localhost:27017/sustain4ward"
+app.config["MONGO_URI"]="mongodb://10.5.52.120:27017/sustain4ward"
 mongo = PyMongo(app)
-
-@app.route("/api/")
-def api():
-    category= request.args.get("product")
-    return render_template("colour.html" , link = d[category]["alt"] , num=d[category]["val"])
+CORS(app)
+@app.route("/extapi/" , methods=["POST","GET"])
+def extapi():
+    pattern =""
+    if request.method=="GET":
+        return "access by post only"
+    data = json.loads( request.data)
+    
+    # mongo.db.hbproducts.create_index({"Product name (and functional unit)" : "text"})
+    objs=[]
+    # obj = mongo.db.hbproducts.find({ "Product name (and functional unit)" : {"$text" : "Cereal" } })
+    for word in data:
+        objs.extend(list(mongo.db.hbproducts.find({ "Product name (and functional unit)" : {"$text" : word } })))
+    
+    objs=list(objs)
+    print(objs)
+    
+    
+    return "ok"
     pass
 
-@app.route("/extapi/" , methods=["POST"])
+@app.route("/api/")
 def api():
     category= request.args.get("product")
     return render_template("colour.html" , link = d[category]["alt"] , num=d[category]["val"])
