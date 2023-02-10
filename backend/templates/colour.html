@@ -2,9 +2,10 @@
 <head>
   <title>ALTERNATIVE</title>
   <script>
+  
     function changeColor() {
-      var num = document.getElementById("number").value;
-      if (num > 6 && num<=10 ) {
+      var num = "{{num}}"
+      if (num >= 6 && num<=10 ) {
         document.body.style.backgroundColor = "red";
       } else if (num > 0 && num < 3) {
         document.body.style.backgroundColor = "green";
@@ -17,6 +18,6 @@
 <body>
   <h1>FIND A BETTER ALTERNATIVE AT {{link}} </h1>
   <h2>The Carbon foodprint value of your product is {{num}}</h2>
-  <button onclick="changeColor()">Click Here</button>
 </body>
+acri
 </html>
