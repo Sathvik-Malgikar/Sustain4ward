@@ -15,4 +15,3 @@ def create_cert(name,offset,activities):
     raw.save("converted.png")
     
     
-create_cert("Sanjana",5,3)
