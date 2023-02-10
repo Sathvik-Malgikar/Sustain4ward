@@ -1,14 +1,24 @@
-<script>
-  import Link from './lib/Link.svelte'
+<script type="js">
+import Counter from './lib/Counter.svelte';
+import Link from './lib/Link.svelte'
+
+let cats = [
+		{ id: 'J---aiyznGQ', name: 'Keyboard Cat' },
+		{ id: 'z_AbfPXTKms', name: 'Maru' },
+		{ id: 'OUtn3pvWmpg', name: 'Henri The Existential Cat' }
+	];
+
 </script>
 
 <main>
   <div id="bg-image">
     <div id="navbar">
         <Link text="Home" --fontsize='1.3rem' --fontWeight="600"></Link>
-        <Link text="Products" --fontsize='1.3rem' --fontWeight="600"></Link>
-        <Link text="Campaigns" --fontsize='1.3rem' --fontWeight="600"></Link>
+        <a href="src\Camp.svelte">Campaigns</a>
+        <a href="src/lib/ProductsPage.svelte">Products</a>
+        <!-- <Link text="Campaigns" --fontsize='1.3rem' --fontWeight="600"></Link> -->
         <Link text="Sustain4ward" --fontsize='1.9rem' --fontWeight="600"></Link>
+        <!-- <Link text="Products" --fontsize='1.3rem' --fontWeight="600"></Link>/ -->
         <!-- <Link text="About Us" --fontsize='1.3rem' --fontWeight="600"></Link> -->
         <!-- <Link text="Log In" --fontsize='1.3rem' --fontWeight="600"></Link> -->
         <!-- <Link text="Sign Up" --fontsize='1.3rem' --fontWeight="600"></Link> -->
@@ -20,6 +30,8 @@
     <h1 id="tagline1">Your</h1>
     <h1 id="tagline2">Actions</h1>
     <h1 id="tagline3">Matter...</h1>
+
+    <!-- <Card></Card> -->
 
     <div id="join-us-ctn">
       <p id="join-us-text">Join Us</p>
