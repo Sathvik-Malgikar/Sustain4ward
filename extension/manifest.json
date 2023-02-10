@@ -1,0 +1,21 @@
+{
+    "manifest_version" : 2,
+    "version" : "1.0",
+    "name" : "Sustain4ward",
+    "browser_action" : {
+        "default_popup" : "index.html",
+        "default_title" : "Sustain4ward"
+    },
+    "content_scripts" : [
+        {
+            "matches" : ["https://www.amazon.in/*,http://www.amazon.in/*","https://*/*"],
+    
+            "js" : ["parseproduct.js"]
+        }
+    ],
+    "permissions":[
+        "tabs",
+
+        "https://www.amazon.in/*,http://www.amazon.in/*","https://*/*"
+    ]
+}
