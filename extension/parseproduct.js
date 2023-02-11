@@ -3,9 +3,21 @@ chrome.runtime.onMessage.addListener((req,sender,sendresp)=>{
     if (req.type == "start"){
         start(sendresp)
     }
+    if (req.type == "redirect"){
+        redirect(req.link)
+    }
 })
 
 console.log("ewubf");
+
+function redirect(link){
+    console.log(link);
+    chrome.windows.create({
+        url: "http://"+link,
+        focused: true,
+        state: "maximised"
+      })
+}
 
 function start (sendresp){
     

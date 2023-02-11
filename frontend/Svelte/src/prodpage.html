@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>our Products</title>
+    <link rel="stylesheet" href="prodstyle.css">
+</head>
+<script>
+</script>
+<body>
+    <div id="bg-image">
+	</div>
+		<div id="navbar">
+		  <!-- <Link text="Home" --fontsize='1.3rem' --fontWeight="600"></Link>
+		  <Link text="Products" --fontsize='1.3rem' --fontWeight="600"></Link>
+		  <Link text="Campaigns" --fontsize='1.3rem' --fontWeight="600"></Link>
+		  <Link text="Sustain4ward" --fontsize='1.9rem' --fontWeight="600"></Link> -->
+		  <!-- <Link text="About Us" --fontsize='1.3rem' --fontWeight="600"></Link> -->
+		  <!-- <Link text="Log In" --fontsize='1.3rem' --fontWeight="600"></Link> -->
+		  <!-- <Link text="Sign Up" --fontsize='1.3rem' --fontWeight="600"></Link> -->
+		  <a href="src\About.svelte">About Us</a>
+		  <a href="src\Login.html">Log In</a>
+		  <a href="src\Signup.html">Sign Up</a>
+	  </div>
+
+	  <!-- <Card></Card> -->
+	  <div id="ctn"></div>
+
+	   <div id="tagline-container">
+		  <p id="taglinepp">Explore our Products</p>
+	  </div>
+
+	  <div id="searchbar">
+			<input value="" id="abc" type="text" placeholder="Search for Products">
+	  </div> 
+<button id="myid">
+	search
+</button>
+	  <div id="prodcont">
+
+	  </div>
+	<script src="alt.js"></script>
+	<script>
+		
+// import Link from 'lib/Link.svelte'
+	// let Card = require('./Card.svelte')
+	// import Card2 from './lib/Card2.svelte';
+    // import { each } from 'svelte/internal';
+    // import Counter from './lib/Counter.svelte';
+  
+	// export let query ;
+	let myid = document.getElementById("myid")
+	myid.addEventListener("click" ,()=>{
+		let query = document.getElementById("abc").value
+	const myArray = query.split(" ");
+	console.log("myar ", myArray);
+	sendtobknd(myArray)
+	})
+	async function sendtobknd(myArray){
+		
+    let resp = await fetch("http://10.5.52.120:5000/extapi/",{method:"POST",
+    headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    body : JSON.stringify(myArray)
+    })
+    let respdata = await resp.json()
+    datadisp(respdata)
+}
+
+
+function datadisp(data){
+	console.log(data);
+    let prodcont = document.getElementById("prodcont")
+    // prodcont.style.width="600px"
+    // document.body.style.backgroundImage = "linear-gradient(red, yellow)"
+    // document.body.style.color= "white"
+	prodcont.innerHTML=""
+    data.forEach(element => {
+        let child = document.createElement("h4")
+        child.innerText = element
+        prodcont.appendChild(child)
+    });
+}
+
+	</script>
+</body>
+</html>

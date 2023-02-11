@@ -15,7 +15,7 @@ let cats = [
     <div id="navbar">
         <Link text="Home" --fontsize='1.3rem' --fontWeight="600"></Link>
         <a href="src\Camp.svelte">Campaigns</a>
-        <a href="src/lib/ProductsPage.svelte">Products</a>
+        <a href="src\prodpage.html">Products</a>
         <!-- <Link text="Campaigns" --fontsize='1.3rem' --fontWeight="600"></Link> -->
         <Link text="Sustain4ward" --fontsize='1.9rem' --fontWeight="600"></Link>
         <!-- <Link text="Products" --fontsize='1.3rem' --fontWeight="600"></Link>/ -->
