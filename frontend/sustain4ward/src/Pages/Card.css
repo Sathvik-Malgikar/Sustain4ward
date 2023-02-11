@@ -1,0 +1,29 @@
+#ctn-card {
+	/* width: 100px; */
+	/* height: 3rem; */
+	background-color: #C6FFC1;
+	border-radius: 1rem;
+	text-align: center;
+	margin: 2rem;
+	padding: 4rem;
+}
+
+img {
+	width: 3rem;
+	height: 3rem;
+	object-fit: cover;
+}
+
+#button {
+	font-size: 1.rem;
+	background-color: #0D3432;
+	color: white;
+	border-radius: 0.5rem;
+}
+#visit {
+	color: white;
+}
+
+progress {
+	background: green;
+}

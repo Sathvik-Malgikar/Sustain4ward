@@ -1,11 +1,5 @@
 <style>
     /* Add some styles for the page */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #F2F2F2;
-    }
     .container {
       width: 80%;
       margin: 0 auto;

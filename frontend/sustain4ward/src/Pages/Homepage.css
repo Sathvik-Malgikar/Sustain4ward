@@ -1,0 +1,66 @@
+#join-us-text {
+font-size: 1.9rem;
+padding-right: 1rem;
+padding-bottom: 5rem;
+font-weight: 500;
+
+}
+
+#join-us-ctn {
+width: 20rem;
+height: 20rem;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #C6FFC1;
+border-radius: 10rem;
+position: relative;
+left: 86%;
+top: 9rem;
+color: #0D3432;
+
+}
+
+#tagline1 {
+font-size: 4.5rem;
+font-weight: 500;
+color: white;
+margin-top: 18rem;
+margin-bottom: 0rem;
+margin-left: 5%;
+}
+
+#tagline2, #tagline3 {
+font-size: 4.5rem;
+font-weight: 500;
+color: white;
+margin: 0rem;
+margin-left: 5%;
+}
+
+#bg-image-home { 
+background: url(./assets/bg-img2.jpg) no-repeat center center fixed; 
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+width: 100%;
+min-height: 100%;
+top: 0;
+position: fixed;
+/* filter: blur(2px); */
+z-index: -1;
+transform: scale(1.02);
+}
+
+@font-face {
+  font-family: "quicksand";
+  /* src: url("./assets/Jost-Regular.ttf"); */
+  src: url("./assets/Quicksand-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 1000;
+}
+
+
+* {
+  font-family: quicksand;
+}

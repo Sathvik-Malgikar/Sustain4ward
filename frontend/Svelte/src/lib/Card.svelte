@@ -1,4 +1,4 @@
-<script>
+<script type="module">
 </script>
 
 <p>jaskdfj</p>

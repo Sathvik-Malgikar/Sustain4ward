@@ -1,0 +1,25 @@
+header {
+	color: white;
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+.about, section{
+	color: white;
+	text-align: center;
+}
+
+#bg-image-about { 
+	background: url(./assets/bg-img2.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	width: 100%;
+	min-height: 100%;
+	top: 0;
+	position: fixed;
+	filter: blur(10px);
+	z-index: -1;
+	transform: scale(1.02);
+	}

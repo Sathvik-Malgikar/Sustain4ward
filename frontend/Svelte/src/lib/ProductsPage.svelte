@@ -1,10 +1,13 @@
-<script >
+<script>
+    // import Card from '../../dist/Card.svelte';
+
+
 	// import Link from 'lib/Link.svelte'
 	// let Card = require('./Card.svelte')
 	// import Card2 from './lib/Card2.svelte';
     // import { each } from 'svelte/internal';
     // import Counter from './lib/Counter.svelte';
-    import Card from "./Card.svelte";
+    
 	let cats = [
 		{ id: 'J---aiyznGQ', name: 'Keyboard Cat' },
 		{ id: 'z_AbfPXTKms', name: 'Maru' },
@@ -28,7 +31,7 @@
 		  <a href="src\Signup.html">Sign Up</a>
 	  </div>
 
-	  <Card></Card>
+	  <!-- <Card/> -->
 	  <div id="ctn"></div>
 
 	  <!-- <div id="tagline-container">
