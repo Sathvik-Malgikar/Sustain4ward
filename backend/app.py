@@ -113,13 +113,23 @@ def webapi():
     # print(len(objs))
     # for item in objs:
     #     print(item["Product name (and functional unit)"],"\n\n")
-    
+    print(objs[0])
+    # return "ERh"
     titles = list(map(lambda a:a["Product name (and functional unit)"] , objs))
-    imgs = list(map(lambda a:a["imgurl"] , objs))
+    
+    def checker(a):
+        
+        if "imgurl" not in a:
+            return ""
+        else:
+            return a["imgurl"]
+        
+    
+    imgs = list(map( checker , objs))
     # print(titles)
     # cfp = sum(list(map(lambda a:a["*Carbon intensity"] , objs)))/len(objs)
     # cfp =round(cfp , 4)
-    ecoval =[ random.random(1,5) for x in titles]
+    ecoval =[ (random.random()+1) *5 for x in titles]
     towebapp = [ {"prodname" : x, "imgurl" :y , "ecoval" :z} for x in titles for y in imgs for z in ecoval  ]
     return towebapp
     
@@ -146,27 +156,40 @@ def api():
     return render_template("colour.html" , link = d[category]["alt"] , num=d[category]["val"])
     pass
 
-# @app.route("/uploadproduct/" , methods=["POST" , "GET"] )
-# def uploadproduct():
-#     if request.method=="POST":
-#         data = request.form
-#         # print(data)
-#         data = dict(data.copy())
-#         if "img" not in request.files:
-#             return "file not uploaded rpoperly, refresh and try again"
-#         img = request.files["img"]
-#         mongo.save_file(img.filename , img)
-#         # return mongo.send_file(img.filename)
-#         print("saved :",img.filename)
-#         data["img"] = img.filename
-#         mongo.db.get_collection("products").insert_one(data)
-#         return "uploaded!"
-#     return send_file("../frontend/insertportal/insertport.html")
-#     pass
-# @app.route("/getimage/<name>")
-# def getimage(name):
-#     print("asked for:",name)
-#     return mongo.send_file(name)
+@app.route('/signin/', methods=['POST'])
+def post_sign_in():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = Users.find_one({'email': email, 'password': password})
+        if user:
+            res = Response(response=json.dumps(
+                {'email': email, 'score': user['score']}), mimetype="application/json", status=200)
+            res.headers['Access-Control-Allow-Origin'] = '*'
+            return res
+        else:
+            reserr = Response(
+                response={'message': 'User with given credentials not found. Please sign up'}, status=404)
+            return reserr
+
+
+@app.route('/signup/', methods=['POST'])
+def post_sign_up():
+    # if request.method == 'POST':
+    name = request.form['name']
+    password = request.form['password']
+    email = request.form['email']
+    existinguser = Users.find_one({'email': email, 'password': password})
+    print(existinguser)
+    if existinguser:
+        resp = Response(json.dumps(
+            {'message': 'User already exist please sign in'}), response=400, mimetype="application/json")
+        resp.headers['Access-Control-Allow-Origin'] = '*'
+        return resp
+    Users.insert_one({'email': email, 'password': password, 'score': 0})
+    resp2 = Response(json.dumps(
+        {'email': email, 'name': name, 'score': 0}), response=200, mimetype="application/json")
+    return resp2
 
 @app.route("/")
 def home():
