@@ -11,9 +11,9 @@ chrome.runtime.onMessage.addListener((req,sender,sendresp)=>{
 console.log("ewubf");
 
 function redirect(link){
-    // console.log(link);
+    console.log(link);
     chrome.windows.create({
-        url: link,
+        url: "http://"+link,
         focused: true,
         state: "maximised"
       })

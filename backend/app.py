@@ -82,8 +82,8 @@ def getlink(title):
     if not returnobj:
         return Response(status=404)
     link  = returnobj[0]["link"]
-    print(link)
-    return link
+    # print(type(link))
+    return {"link":link}
     pass
 
 

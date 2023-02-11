@@ -35,15 +35,18 @@ function datadisp(data){
     data.forEach((element) => {
         child = document.createElement("h4")
         child.innerText = element
-        child.style.color = "black"
+        child.style.overflow = "hidden"
+        child.style.color = "blue"
+        child.style.textDecoration = "underline"
+        child.style.textOverflow = "ellipsis"
         child.style.fontSize = "20"
         child.addEventListener("click" , (event)=>{
             console.log(event.target.innerText);
-            fetch("http://127.0.0.1:5000/getlink/"+event.target.innerText).then(link=>{
+            fetch("http://127.0.0.1:5000/getlink/"+event.target.innerText).then(resp=>{
                 
-                return link.json()
-            }).then((link)=>{
-                redirect(link)
+                return resp.json()
+            }).then((data)=>{
+                redirect(data.link)
             })
         })
         let offset = document.createElement("p")
@@ -78,10 +81,8 @@ function redirect(link){
 
     },3000)
     console.log(link , typeof link);
-    chrome.windows.create({
+    chrome.tabs.create({
         url: link,
-        focused: true,
-        state: "maximised"
       })
 
     chrome.tabs.query({active : true , currentWindow : true } ,function (tabs){
