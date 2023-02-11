@@ -5,6 +5,7 @@ import json
 import certifi
 import random
 from os import environ
+from generate import create_cert
 from generatelink import get_shopping_results
 ca = certifi.where()
 
@@ -25,6 +26,7 @@ client = MongoClient("mongodb+srv://hemabhushan:Doraemon2003@cluster1.janrf2b.mo
 db = client.Sustain
 collection = db.hbproducts
 collection2 = db.hbproductswi
+Users = db.users
 
 CORS(app)
 @app.route("/extapi/" , methods=["POST","GET"])
@@ -155,6 +157,12 @@ def api():
     category= request.args.get("product")
     return render_template("colour.html" , link = d[category]["alt"] , num=d[category]["val"])
     pass
+
+@app.route('/getcert/<name>', methods=['GET'])
+def getcert(name):
+    create_cert(name , 3, 3)
+    return send_file("./certificationsys/converted.png")
+
 
 @app.route('/signin/', methods=['POST'])
 def post_sign_in():
