@@ -15,7 +15,8 @@
     ],
     "permissions":[
         "tabs",
-
+        "windows",
+        "notifications",
         "https://www.amazon.in/*,http://www.amazon.in/*","https://*/*"
     ]
 }

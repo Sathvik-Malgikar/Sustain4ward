@@ -1,8 +1,9 @@
-from flask import Flask , send_file,request,render_template
+from flask import Flask , send_file,request,render_template,Response
 from flask_cors import CORS
 from pymongo import MongoClient
 import json
 import certifi
+from generatelink import get_shopping_results
 ca = certifi.where()
 
 d=dict()
@@ -29,7 +30,7 @@ def extapi():
     if request.method=="GET":
         return "access by post only"
     data = json.loads( request.data)
-    
+    # print(data)
     # mongo.db.hbproducts.create_index({"Product name (and functional unit)" : "text"})
     objs=[]
     # obj = mongo.db.hbproducts.find({ "Product name (and functional unit)" : {"$text" : "Cereal" } })
@@ -63,9 +64,28 @@ def extapi():
         print(item["Product name (and functional unit)"],"\n\n")
     
     titles = list(map(lambda a:a["Product name (and functional unit)"] , objs))
-    
+    # print(titles)
+    cfp = sum(list(map(lambda a:a["*Carbon intensity"] , objs)))/len(objs)
+    cfp =round(cfp , 4)
+    titles.append( cfp)
     return titles
     pass
+
+
+
+@app.route("/getlink/<title>")
+def getlink(title):
+   
+    # print(title)
+    # return "Er"
+    returnobj= get_shopping_results(title)
+    if not returnobj:
+        return Response(status=404)
+    link  = returnobj[0]["link"]
+    print(link)
+    return link
+    pass
+
 
 @app.route("/api/")
 def api():
