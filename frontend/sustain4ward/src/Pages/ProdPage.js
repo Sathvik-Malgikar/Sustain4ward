@@ -25,7 +25,7 @@ function fetchFromB(e){
 
 async function sendtobknd(myArray){
 		
-    let resp = await fetch("http://127.0.0.1:5000/webapi/",{method:"POST",
+    let resp = await fetch("http://10.5.52.120:5000/webapi/",{method:"POST",
     headers: {
         'Content-Type': 'application/json'
         // 'Content-Type': 'application/x-www-form-urlencoded',

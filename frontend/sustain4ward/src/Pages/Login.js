@@ -3,7 +3,11 @@ import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
 	const navigate = useNavigate();
-	const gotoProdPage = () => {navigate("/products")}
+	const gotoProdPage = () => {
+
+		// fetch("http://10.5.52.120:5000/signin/",{method : "POST" , {"username" : ""}})
+navigate()
+	}
 	return (
 		<div id='login-ctn'>
 			<div id="bg-image-login">
