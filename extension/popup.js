@@ -13,7 +13,7 @@ btn.addEventListener("click",()=>{
 async function sendtobknd(data){
     btn.disabled = true
     console.log("snet");
-    let resp = await fetch("http://127.0.0.1:5000/extapi/",{method:"POST",
+    let resp = await fetch("http://10.5.52.120:5000/extapi/",{method:"POST",
     headers: {
         'Content-Type': 'application/json'
       },
@@ -37,12 +37,13 @@ function datadisp(data){
         child.innerText = element
         child.style.overflow = "hidden"
         child.style.color = "blue"
+        child.style.height = "30%"
         child.style.textDecoration = "underline"
-        child.style.textOverflow = "ellipsis"
+        child.classList.add("truncate")
         child.style.fontSize = "20"
         child.addEventListener("click" , (event)=>{
             console.log(event.target.innerText);
-            fetch("http://127.0.0.1:5000/getlink/"+event.target.innerText).then(resp=>{
+            fetch("http://10.5.52.120:5000/getlink/"+event.target.innerText).then(resp=>{
                 
                 return resp.json()
             }).then((data)=>{
@@ -50,7 +51,12 @@ function datadisp(data){
             })
         })
         let offset = document.createElement("p")
-        offset.innerText="-"+ element.length
+        num = element.length
+        if (num>=50){
+            num=48 + Math.random()*5
+        }
+        num = Math.round( num)
+        offset.innerText="-"+ num.toString()
         offset.style.color= "green"
         offset.style.fontSize= "larger"
         offset.textShadow = "2px 2px 5px #00000070;"
