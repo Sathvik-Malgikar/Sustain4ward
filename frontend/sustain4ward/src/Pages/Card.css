@@ -6,12 +6,17 @@
 	text-align: center;
 	margin: 2rem;
 	padding: 4rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 img {
-	width: 3rem;
-	height: 3rem;
+	width: 10rem;
+	height: 10rem;
 	object-fit: cover;
+	object-position: center;
 }
 
 #button {
@@ -22,8 +27,20 @@ img {
 }
 #visit {
 	color: white;
+	padding: 3rem;
+}
+
+.truncate {
+    display: inline-block;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 progress {
 	background: green;
+}
+p {
+	font-size: 1rem;
 }
