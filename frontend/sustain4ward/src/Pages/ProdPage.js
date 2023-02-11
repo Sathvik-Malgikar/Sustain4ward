@@ -1,42 +1,73 @@
+
+import { useState } from 'react';
 import Card from './Card';
 import Navbar from './Navbar';
 import './Prodpage.css'
 
 // function spawn(){}
 
-function spawn(data){
-	let out = []
-	data.forEach((e, i)=>{
-		out.push(<Card name={e.prodname} value={e.ecoval}></Card>)
-	})
-}
 
-function fetchFromB(e){
 
-	if (e.keyCode == 13){
-		let searchbar = document.getElementById("text-input")
+const ProdPage = () => {
+	const [data, setData] = useState([]);
 
-		let query = searchbar.value
+	function spawn(data){
+		setData([])
+		let out = []
+		let e
+		data.forEach((e, i)=>{
+			console.log("spawn", e)
+			out.push(<Card props={e} key={i}></Card>)
+		})
+		// sh(out)
+		setData(out)
+	}
+	
+	function fetchFromB(e){
+	
+		if (e.keyCode == 13){
+			let searchbar = document.getElementById("text-input")
+	
+			let query = searchbar.value
+			const myArray = query.split(" ");
+			console.log("myar ", myArray);
+			sendtobknd(myArray)
+		}
+	}
+	function fetchFromB2(query){
 		const myArray = query.split(" ");
 		console.log("myar ", myArray);
 		sendtobknd(myArray)
 	}
-}
+	
+	 function sendtobknd(myArray){
+			
+		// let resp = await fetch("http://10.5.52.120:5000/webapi/",{method:"POST",
+		// headers: {
+		//     'Content-Type': 'application/json'
+		//     // 'Content-Type': 'application/x-www-form-urlencoded',
+		//   },
+		// body : JSON.stringify(myArray)
+		// })
+		// let respdata = await resp.json()
+		// // console.log(respdata)
+		// spawn(respdata)
+	
+	fetch("http://10.5.52.120:5000/webapi/",{method:"POST",
+		headers: {
+			'Content-Type': 'application/json'
+			// 'Content-Type': 'application/x-www-form-urlencoded',
+		  },
+		body : JSON.stringify(myArray)
+		}).then(resp=>{
+			return resp.json()
+		}).then(data=>{
+			console.log(data)
+			spawn(data)
+		})
+	}
 
-async function sendtobknd(myArray){
-		
-    let resp = await fetch("http://10.5.52.120:5000/webapi/",{method:"POST",
-    headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    body : JSON.stringify(myArray)
-    })
-    let respdata = await resp.json()
-    spawn(respdata)
-}
 
-const ProdPage = () => {
 	return(
 		<div>
 			<div id="bg-image-prod">
@@ -50,12 +81,11 @@ const ProdPage = () => {
 				</div>
 				
 				<div id="searchbar">
-					<input id="text-input" type="text" placeholder="Search for Products" onKeyDown={fetchFromB}></input>
+					<input id="text-input" type="text" placeholder="Search for Products" onKeyDown={fetchFromB} ></input>
 				</div>
 
 				<div id='card-ctn'>
-					{/* {spawn()} */}
-					
+					{data}	
 				</div>
 		</div>
 
