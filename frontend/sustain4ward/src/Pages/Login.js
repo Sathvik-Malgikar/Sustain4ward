@@ -3,10 +3,9 @@ import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
 	const navigate = useNavigate();
-	const gotoProdPage = () => {
+	const gotoProdPage = async () => {
 
-		// fetch("http://10.5.52.120:5000/signin/",{method : "POST" , {"username" : ""}})
-navigate()
+	 
 	}
 	return (
 		<div id='login-ctn'>

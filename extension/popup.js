@@ -13,7 +13,7 @@ btn.addEventListener("click",()=>{
 async function sendtobknd(data){
     btn.disabled = true
     console.log("snet");
-    let resp = await fetch("http://10.5.52.120:5000/extapi/",{method:"POST",
+    let resp = await fetch(" http://172.16.128.19:5000/extapi/",{method:"POST",
     headers: {
         'Content-Type': 'application/json'
       },
@@ -43,7 +43,7 @@ function datadisp(data){
         child.style.fontSize = "20"
         child.addEventListener("click" , (event)=>{
             console.log(event.target.innerText);
-            fetch("http://10.5.52.120:5000/getlink/"+event.target.innerText).then(resp=>{
+            fetch(" http://172.16.128.19:5000/getlink/"+event.target.innerText).then(resp=>{
                 
                 return resp.json()
             }).then((data)=>{
