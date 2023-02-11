@@ -181,22 +181,22 @@ def post_sign_in():
             return reserr
 
 
-@app.route('/signup/', methods=['POST'])
+@app.route('/signup/', methods=['POST',"GET"])
 def post_sign_up():
-    # if request.method == 'POST':
-    name = request.form['name']
-    password = request.form['password']
-    email = request.form['email']
-    existinguser = Users.find_one({'email': email, 'password': password})
+    if request.method == 'GET':
+        return "only post bro"
+    name = json.loads(request.data)
+    print(name)
+    existinguser = Users.find_one({'email': name["email"], 'password': name["password"]})
     print(existinguser)
     if existinguser:
+        return Response(status=400)
         resp = Response(json.dumps(
             {'message': 'User already exist please sign in'}), response=400, mimetype="application/json")
         resp.headers['Access-Control-Allow-Origin'] = '*'
         return resp
-    Users.insert_one({'email': email, 'password': password, 'score': 0})
-    resp2 = Response(json.dumps(
-        {'email': email, 'name': name, 'score': 0}), response=200, mimetype="application/json")
+    Users.insert_one({'email': name["email"], 'password': name["password"], 'score': 0})
+    resp2 = Response(json.dumps({'email': name["email"], 'password': name["password"],'score': 0}), response=200, mimetype="application/json")
     return resp2
 
 @app.route("/")
