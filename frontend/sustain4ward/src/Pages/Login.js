@@ -49,7 +49,7 @@ const Login = () => {
 
 		console.log(e.value, p.value)
 
-		fetch("http://172.16.128.19:5000/signin/",{method:"POST",
+		fetch("http://10.5.52.120:5000/signin/",{method:"POST",
 		headers: {
 			'Content-Type': 'application/json'
 			// 'Content-Type': 'application/x-www-form-urlencoded',
@@ -59,7 +59,9 @@ const Login = () => {
 			return resp.json()
 		}).then(data=>{
 			setData(data)
+			console.log(data)
 			setInit(init2)
+			setData(data)
 		})
 
 	}

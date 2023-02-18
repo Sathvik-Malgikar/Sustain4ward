@@ -167,12 +167,11 @@ def getcert(name):
 @app.route('/signin/', methods=['POST'])
 def post_sign_in():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        user = Users.find_one({'email': email, 'password': password})
+        body=json.loads(request.data)
+        user = Users.find_one({'email': body["email"], 'password': body["password"]})
         if user:
             res = Response(response=json.dumps(
-                {'email': email, 'score': user['score']}), mimetype="application/json", status=200)
+                {'email': body["email"], 'score': user["score"]}), mimetype="application/json", status=200)
             res.headers['Access-Control-Allow-Origin'] = '*'
             return res
         else:

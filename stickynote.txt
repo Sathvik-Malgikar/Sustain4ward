@@ -1,0 +1,34 @@
+OVERVIEW:
+// Sustain4ward
+Responsible consumption and production aware of self-carbon footprint.
+   also various other chemicals.
+// get to know about env campangs  / activites around you, venue,date.
+//beach cleaning sessions, 
+partner with green products (sponsor)  .
+// creating awareness that the big and developed countries cause more footprint than smaller ones hence reducing the footprint from these countries is more apt and easy also, considering the tech available in these countries.
+ecological footprint means land and the water we use of living and to absorb the waste
+make user proud and happy by displaying them their contribution and its effect in a creative way, blowing the carbon footprint away anim blender pranav
+co2 equivalent
+IPAT equation dependent variable
+rebound effect
+carbon offset
+info section // know what to do with hazardous waste, wet and dry, electronic
+paris agreement:
+limit global warming to well below 2 degree celsisus in comparision to pre-industrial levels
+no food wastage
+use theme and logo sdg12
+TODO:
+
+prodname
+imgurl
+ecoval
+prodlink
+
+
+PRESENTATION AND POINTING OUT UNIQUE
+WEBAPP making.
+chrome extension making.
+find and link relevant API
+___________
+IDENTIFY TASKS.
+SPLIT TASKS acc to skill.
